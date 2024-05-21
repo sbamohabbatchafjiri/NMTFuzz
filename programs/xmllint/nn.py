@@ -469,7 +469,7 @@ def build_model(data, weighted_loss):
     model.add(Dense(num_classes))
     model.add(Activation('sigmoid'))
 
-    opt = keras.optimizers.adam(lr=0.0001)
+    opt = keras.optimizers.nadam(lr=0.0001)
     pos_weight = (np.sum(data==0, axis=0)+ np.sum(data==0.25, axis=0)/4) / (np.sum(data==1, axis=0)+0.75*np.sum(data==0.25, axis=0))
     # pos_weight = ((data.shape[0] - np.sum(data,axis=0))/np.sum(data, axis=0))
     beta = pos_weight
